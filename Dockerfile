@@ -1,6 +1,6 @@
 # Dockerfile for PHP-Apache Setup
 
-FROM php:7.4-apache
+FROM php:8.1-apache
 
 # Enable apache modules
 RUN docker-php-ext-install mysqli
