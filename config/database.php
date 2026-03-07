@@ -1,14 +1,15 @@
 <?php
 // ============================================================
 // Database Configuration
-// Update credentials to match your local MySQL installation
+// Credentials are read from environment variables so the same
+// file works under Docker (docker-compose.yml) and locally.
 // ============================================================
 
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'oems_db');
-define('DB_PORT', 3306);
+define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
+define('DB_USER', getenv('DB_USER') ?: 'root');
+define('DB_PASS', getenv('DB_PASSWORD') ?: '');
+define('DB_NAME', getenv('DB_NAME') ?: 'oems_db');
+define('DB_PORT', (int)(getenv('DB_PORT') ?: 3306));
 
 /**
  * Returns a new MySQLi connection.
