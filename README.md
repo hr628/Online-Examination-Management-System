@@ -1,111 +1,118 @@
-# Online Examination Management System
+# Online Examination Management System — DBMS Lab Project
 
 ## Project Description
-This project is an Online Examination Management System designed to enable easy management of online exams, candidate registrations, and results. The system provides a user-friendly interface for both candidates and instructors to interact with the exam process efficiently.
+The Online Examination Management System (OEMS) is a role-based web application designed to facilitate online examinations for educational institutions. The system supports three distinct user roles: Admin, Instructor, and Student. Each role provides specific functionalities tailored to their needs, ensuring a comprehensive user experience.
 
 ## Technology Stack
-- **PHP**: Versions 7.4/8.x
-- **MySQL**: Version 8.0
-- **Bootstrap**: Version 5
-- **Docker**: For containerized deployment
+| Technology       | Version       |
+|------------------|---------------|
+| HTML5            | Latest        |
+| CSS3             | Latest        |
+| Bootstrap 5.3    | Latest        |
+| JavaScript       | Latest        |
+| PHP              | 8.x           |
+| MySQL            | 8.x           |
+| Apache           | Latest        |
+| Docker           | Latest        |
 
 ## Features
-- User roles for admin, instructors, and students
-- Robust examination and question management
-- Result generation and analytics
-- Secure access management and data integrity
+### Admin Features
+- User management (add, edit, delete users)
+- Role assignment (Admin, Instructor, Student)
+- View and manage all examinations
 
-## Installation & Setup
-Choose one of the following options for installation:
+### Instructor Features
+- Create and manage question banks
+- Schedule and oversee exams
+- Evaluate student performance and provide feedback
 
-### Option 1: Docker
-#### Prerequisites
-- Docker installed on your machine.
-- Basic knowledge of Docker commands.
+### Student Features
+- Register for courses and examinations
+- Attempt exams online
+- View results and performance analytics
 
-#### Steps to Setup Docker
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/hr628/Online-Examination-Management-System.git
-   cd Online-Examination-Management-System
-   ```
-2. Build the Docker containers:
-   ```bash
-   docker-compose up -d
-   ```
-3. Access the application at `http://localhost:8080`
-4. Access phpMyAdmin at `http://localhost:8081`
+## Database Design
+The system consists of 10 tables:
+1. **users** - Stores user information and roles.
+2. **categories** - Defines question categories.
+3. **question_banks** - Contains questions grouped by categories.
+4. **questions** - Lists actual questions for the exams.
+5. **exams** - Details about scheduled exams.
+6. **exam_questions** - Links questions to exams.
+7. **student_exams** - Records which students are taking which exams.
+8. **student_answers** - Stores answers provided by students during exams.
+9. **results** - Records student performance metrics.
+10. **audit_log** - Maintains action logs for accountability.
 
-### Option 2: XAMPP/WAMP
-#### Prerequisites
-- XAMPP or WAMP installed.
-- Basic knowledge of XAMPP/WAMP setup.
-
-#### Steps to Setup XAMPP/WAMP
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/hr628/Online-Examination-Management-System.git
-   ```
-2. Move the cloned repository to the `htdocs` folder of XAMPP:
-   ```bash
-   mv Online-Examination-Management-System /path/to/xampp/htdocs/
-   ```
-3. Start XAMPP Control Panel and run the following services:
-   - Apache
-   - MySQL
-4. Open `phpMyAdmin` in your browser at `http://localhost/phpmyadmin`
-5. Import the SQL files in the following order:
-   - `01_schema.sql`
-   - `02_triggers.sql`
-   - `03_procedures.sql`
-   - `04_views.sql`
-   - `05_sample_data.sql`
-6. Configure database credentials:
-   Edit the `config/database.php` file to set your database credentials.
-7. Access the application at `http://localhost/Online-Examination-Management-System`
-
-## Access URLs
-- **Docker**: 
-  - Application: `http://localhost:8080`
-  - phpMyAdmin: `http://localhost:8081`
-- **XAMPP**: 
-  - Application: `http://localhost/Online-Examination-Management-System`
-
-## Default Login Credentials
-| Role      | Username  | Password |
-|-----------|-----------|----------|
-| Admin     | admin     | admin    |
-| Instructor | instructor | instructor |
-| Student   | student   | student  |
-
-## Database Design Overview
-The database consists of 10 tables, including users, exams, questions, results, etc.
+**Constraints:** Unique, foreign keys, checks, etc. are enforced as needed.
 
 ## SQL Concepts Demonstrated
-- Normalization
-- Joins and relationships between tables
-- Triggers and stored procedures
+The project includes the following SQL files covering various concepts:
+1. `01_schema.sql` - Define database schema.
+2. `02_insert_data.sql` - Insert initial data.
+3. `03_question_management.sql` - Manage questions.
+4. `04_exam_management.sql` - Handle exam creation.
+5. `05_results_management.sql` - Manage results.
+6. `06_complex_queries.sql` - Complex SQL queries for analytics.
 
-## Security Features
-- Hashing of passwords
-- Role-based access control
-- Validation and sanitization of input data
+## Project Structure Tree
+```
+Online-Examination-Management-System/
+├── Docker/
+├── Docs/
+├── src/
+│   ├── Admin/
+│   ├── Instructor/
+│   └── Student/
+└── SQL/
+    ├── 01_schema.sql
+    ├── 02_insert_data.sql
+    ├── 03_question_management.sql
+    ├── 04_exam_management.sql
+    ├── 05_results_management.sql
+    └── 06_complex_queries.sql
+```
+
+## Installation Setup
+### Docker
+1. Clone the repository.
+2. Navigate to the Docker directory.
+3. Build and run Docker containers.
+
+### XAMPP/WAMP
+1. Install XAMPP/WAMP.
+2. Create a new database in phpMyAdmin.
+3. Import SQL files in this order:
+   - `01_schema.sql`
+   - `02_insert_data.sql`
+   - `03_question_management.sql`
+   - `04_exam_management.sql`
+   - `05_results_management.sql`
+   - `06_complex_queries.sql`
+4. Access the application in your browser.
+
+## Default Login Credentials
+| Role          | Username       | Password      |
+|---------------|----------------|---------------|
+| Admin         | admin          | Admin@123    |
+| Instructor 1  | instructor1    | Pass@1234    |
+| Student 1     | student1       | Pass@1234    |
+
+## ER Diagram
+![ER Diagram](link_to_your_diagram)  
+*(Insert your ER diagram here with cardinalities.)*
+
+## Security Features Checklist
+- User authentication and role-based access control.
+- Data validation and sanitization practices.
+- SQL injection prevention measures implemented.
 
 ## Engineering Proficiency Alignment
-- EP1: Problem identification and solving
-- EP2: Development of software solutions
-- EP4: Testing and validation
+- EP1: Basic Programming
+- EP2: System Design
+- EP4: Advanced Database Management
 
-## Project Structure
-- `src/`: Source code
-- `config/`: Configuration files
-- `docs/`: Documentation
-
-## Troubleshooting Tips
-- Ensure all services are running in XAMPP.
-- Verify that database credentials are correct in `config/database.php`.
-- Check Docker logs if containers fail to start.
-
----
-
-For any inquiries or issues, feel free to open an issue in the repository!
+## Troubleshooting
+- Ensure Apache and MySQL are running.
+- Check port configurations if running on Docker.
+- Consult the installation setup if facing issues.
