@@ -44,7 +44,7 @@ if ($selectedExam > 0) {
              JOIN   users u ON u.id = se.student_id
              LEFT JOIN results r ON r.student_exam_id = se.id
              WHERE  se.exam_id = ?
-             ORDER  BY r.percentage DESC NULLS LAST, se.started_at DESC"
+             ORDER  BY r.percentage IS NULL, r.percentage DESC, se.started_at DESC"
         );
         $stmt->bind_param('i', $selectedExam);
         $stmt->execute();

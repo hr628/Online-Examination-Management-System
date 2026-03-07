@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                      VALUES (?,?,?,?,?,?,?,?,?,?,?,?)'
                 );
                 $status = 'draft';
-                $stmt->bind_param('ssiiddiisiii',
+                $stmt->bind_param('ssiiddissiis',
                     $title, $desc, $categoryId, $uid,
                     $totalMarks, $passingMarks, $duration,
                     $startTime, $endTime, $randomized, $maxAttempts, $status

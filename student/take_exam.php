@@ -174,7 +174,7 @@ $csrf      = getCSRFToken();
                                    name="answer_<?= $q['id'] ?>"
                                    value="<?= $key ?>"
                                    class="form-check-input mt-0 flex-shrink-0"
-                                   onchange="markAnswered(<?= $i + 1 ?>)">
+                                   onchange="countAnswered(<?= $i + 1 ?>)">
                             <strong class="text-primary me-1"><?= $key ?>.</strong>
                             <?= htmlspecialchars($value) ?>
                         </label>

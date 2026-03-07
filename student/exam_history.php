@@ -46,8 +46,10 @@ $pageTitle = 'Exam History';
 
     <!-- Summary row -->
     <?php
-    $pcts = array_column(array_filter($history, fn($h) => $h['percentage'] !== null), 'percentage');
-    $avgPct = count($pcts) > 0 ? round(array_sum($pcts) / count($pcts), 1) : 0;
+    $pcts      = array_column(array_filter($history, fn($h) => $h['percentage'] !== null), 'percentage');
+    $avgPct    = count($pcts) > 0 ? round(array_sum($pcts) / count($pcts), 1) : 0;
+    $completed = array_filter($history, fn($h) => $h['status'] === 'completed');
+    $passed    = array_filter($history, fn($h) => !empty($h['is_passed']));
     ?>
     <div class="row g-3 mb-4">
         <div class="col-6 col-md-3">
