@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: exam_system_web
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+    networks:
+      - exam_network
+    environment:
+      - DB_HOST=db
+      - DB_USER=exam_user
+      - DB_PASSWORD=exam_password
+      - DB_NAME=examination_system
+
+  db:
+    image: mysql:8.0
+    container_name: exam_system_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: examination_system
+      MYSQL_USER: exam_user
+      MYSQL_PASSWORD: exam_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d
+    networks:
+      - exam_network
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: exam_system_phpmyadmin
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: exam_user
+      PMA_PASSWORD: exam_password
+    depends_on:
+      - db
+    networks:
+      - exam_network
+
+volumes:
+  db_data:
+
+networks:
+  exam_network:
+    driver: bridge
