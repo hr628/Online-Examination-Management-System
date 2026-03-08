@@ -9,24 +9,24 @@ services:
     volumes:
       - .:/var/www/html
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     networks:
       - exam_network
     environment:
       - DB_HOST=db
-      - DB_USER=exam_user
-      - DB_PASSWORD=exam_password
+      - DB_USER=root
+      - DB_PASSWORD=rootpass123
       - DB_NAME=oems_db
 
   db:
     image: mysql:8.0
     container_name: exam_system_db
     restart: always
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     environment:
-      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_ROOT_PASSWORD: rootpass123
       MYSQL_DATABASE: oems_db
-      MYSQL_USER: exam_user
-      MYSQL_PASSWORD: exam_password
     ports:
       - "3306:3306"
     volumes:
@@ -34,6 +34,12 @@ services:
       - ./sql:/docker-entrypoint-initdb.d
     networks:
       - exam_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpass123"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
 
   phpmyadmin:
     image: phpmyadmin:latest
@@ -44,10 +50,12 @@ services:
     environment:
       PMA_HOST: db
       PMA_PORT: 3306
-      PMA_USER: exam_user
-      PMA_PASSWORD: exam_password
+      PMA_USER: root
+      PMA_PASSWORD: rootpass123
+      PMA_ARBITRARY: 1
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     networks:
       - exam_network
 

@@ -3,9 +3,7 @@
 -- File: 05_sample_data.sql
 -- Description: Seed data for development / demo
 -- All passwords are hashed with PHP password_hash()
--- Plain-text passwords:
---   admin     → Admin@123
---   others    → Pass@1234
+-- Plain-text password for ALL demo accounts: password
 -- MySQL 8.x compatible
 -- ============================================================
 
@@ -16,28 +14,28 @@ USE oems_db;
 -- ============================================================
 INSERT INTO users (username, email, password_hash, full_name, role, phone) VALUES
 -- Admin
-('admin',       'admin@oems.edu',         '$2y$10$TKh8H1.PfTYN5RjBFVnQUuNgDcFOqfhHoGMz.1M3OvHTDlWfkFvEO', 'System Administrator', 'admin',      '+1-555-0100'),
+('admin',       'admin@oems.edu',         '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'System Administrator', 'admin',      '+1-555-0100'),
 -- Instructors
-('instructor1', 'instr1@oems.edu',        '$2y$10$TKh8H1.PfTYN5RjBFVnQUuNgDcFOqfhHoGMz.1M3OvHTDlWfkFvEO', 'Dr. Alice Johnson',    'instructor', '+1-555-0101'),
-('instructor2', 'instr2@oems.edu',        '$2y$10$TKh8H1.PfTYN5RjBFVnQUuNgDcFOqfhHoGMz.1M3OvHTDlWfkFvEO', 'Prof. Bob Williams',   'instructor', '+1-555-0102'),
-('instructor3', 'instr3@oems.edu',        '$2y$10$TKh8H1.PfTYN5RjBFVnQUuNgDcFOqfhHoGMz.1M3OvHTDlWfkFvEO', 'Dr. Carol Martinez',   'instructor', '+1-555-0103'),
-('instructor4', 'instr4@oems.edu',        '$2y$10$TKh8H1.PfTYN5RjBFVnQUuNgDcFOqfhHoGMz.1M3OvHTDlWfkFvEO', 'Prof. David Brown',    'instructor', '+1-555-0104'),
+('instructor1', 'instr1@oems.edu',        '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Dr. Alice Johnson',    'instructor', '+1-555-0101'),
+('instructor2', 'instr2@oems.edu',        '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Prof. Bob Williams',   'instructor', '+1-555-0102'),
+('instructor3', 'instr3@oems.edu',        '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Dr. Carol Martinez',   'instructor', '+1-555-0103'),
+('instructor4', 'instr4@oems.edu',        '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Prof. David Brown',    'instructor', '+1-555-0104'),
 -- Students
-('student1',  'stu1@student.edu',  '$2y$10$TKh8H1.PfTYN5RjBFVnQUuNgDcFOqfhHoGMz.1M3OvHTDlWfkFvEO', 'Emma Wilson',      'student', '+1-555-0201'),
-('student2',  'stu2@student.edu',  '$2y$10$TKh8H1.PfTYN5RjBFVnQUuNgDcFOqfhHoGMz.1M3OvHTDlWfkFvEO', 'James Anderson',   'student', '+1-555-0202'),
-('student3',  'stu3@student.edu',  '$2y$10$TKh8H1.PfTYN5RjBFVnQUuNgDcFOqfhHoGMz.1M3OvHTDlWfkFvEO', 'Sophia Taylor',    'student', '+1-555-0203'),
-('student4',  'stu4@student.edu',  '$2y$10$TKh8H1.PfTYN5RjBFVnQUuNgDcFOqfhHoGMz.1M3OvHTDlWfkFvEO', 'Oliver Thomas',    'student', '+1-555-0204'),
-('student5',  'stu5@student.edu',  '$2y$10$TKh8H1.PfTYN5RjBFVnQUuNgDcFOqfhHoGMz.1M3OvHTDlWfkFvEO', 'Isabella Jackson', 'student', '+1-555-0205'),
-('student6',  'stu6@student.edu',  '$2y$10$TKh8H1.PfTYN5RjBFVnQUuNgDcFOqfhHoGMz.1M3OvHTDlWfkFvEO', 'Lucas White',      'student', '+1-555-0206'),
-('student7',  'stu7@student.edu',  '$2y$10$TKh8H1.PfTYN5RjBFVnQUuNgDcFOqfhHoGMz.1M3OvHTDlWfkFvEO', 'Mia Harris',       'student', '+1-555-0207'),
-('student8',  'stu8@student.edu',  '$2y$10$TKh8H1.PfTYN5RjBFVnQUuNgDcFOqfhHoGMz.1M3OvHTDlWfkFvEO', 'Ethan Martin',     'student', '+1-555-0208'),
-('student9',  'stu9@student.edu',  '$2y$10$TKh8H1.PfTYN5RjBFVnQUuNgDcFOqfhHoGMz.1M3OvHTDlWfkFvEO', 'Ava Thompson',     'student', '+1-555-0209'),
-('student10', 'stu10@student.edu', '$2y$10$TKh8H1.PfTYN5RjBFVnQUuNgDcFOqfhHoGMz.1M3OvHTDlWfkFvEO', 'Noah Garcia',      'student', '+1-555-0210'),
-('student11', 'stu11@student.edu', '$2y$10$TKh8H1.PfTYN5RjBFVnQUuNgDcFOqfhHoGMz.1M3OvHTDlWfkFvEO', 'Charlotte Martinez','student','+1-555-0211'),
-('student12', 'stu12@student.edu', '$2y$10$TKh8H1.PfTYN5RjBFVnQUuNgDcFOqfhHoGMz.1M3OvHTDlWfkFvEO', 'Liam Robinson',    'student', '+1-555-0212'),
-('student13', 'stu13@student.edu', '$2y$10$TKh8H1.PfTYN5RjBFVnQUuNgDcFOqfhHoGMz.1M3OvHTDlWfkFvEO', 'Amelia Clark',     'student', '+1-555-0213'),
-('student14', 'stu14@student.edu', '$2y$10$TKh8H1.PfTYN5RjBFVnQUuNgDcFOqfhHoGMz.1M3OvHTDlWfkFvEO', 'William Lewis',    'student', '+1-555-0214'),
-('student15', 'stu15@student.edu', '$2y$10$TKh8H1.PfTYN5RjBFVnQUuNgDcFOqfhHoGMz.1M3OvHTDlWfkFvEO', 'Harper Lee',       'student', '+1-555-0215');
+('student1',  'stu1@student.edu',  '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Emma Wilson',      'student', '+1-555-0201'),
+('student2',  'stu2@student.edu',  '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'James Anderson',   'student', '+1-555-0202'),
+('student3',  'stu3@student.edu',  '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Sophia Taylor',    'student', '+1-555-0203'),
+('student4',  'stu4@student.edu',  '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Oliver Thomas',    'student', '+1-555-0204'),
+('student5',  'stu5@student.edu',  '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Isabella Jackson', 'student', '+1-555-0205'),
+('student6',  'stu6@student.edu',  '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Lucas White',      'student', '+1-555-0206'),
+('student7',  'stu7@student.edu',  '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Mia Harris',       'student', '+1-555-0207'),
+('student8',  'stu8@student.edu',  '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Ethan Martin',     'student', '+1-555-0208'),
+('student9',  'stu9@student.edu',  '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Ava Thompson',     'student', '+1-555-0209'),
+('student10', 'stu10@student.edu', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Noah Garcia',      'student', '+1-555-0210'),
+('student11', 'stu11@student.edu', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Charlotte Martinez','student','+1-555-0211'),
+('student12', 'stu12@student.edu', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Liam Robinson',    'student', '+1-555-0212'),
+('student13', 'stu13@student.edu', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Amelia Clark',     'student', '+1-555-0213'),
+('student14', 'stu14@student.edu', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'William Lewis',    'student', '+1-555-0214'),
+('student15', 'stu15@student.edu', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Harper Lee',       'student', '+1-555-0215');
 
 -- ============================================================
 -- CATEGORIES (5)
